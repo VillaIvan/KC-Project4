@@ -1,0 +1,22 @@
+---
+import PhoneCard from "./PhoneCard.astro";
+import { phones } from "./data/phones.ts";
+---
+
+<div
+  class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6"
+>
+  {
+    phones.map((phone) => (
+      <PhoneCard
+        key={phone.id}
+        id={phone.id}
+        name={phone.name}
+        price={phone.price}
+        imageSrc={phone.imageSrc}
+        currency={phone.currency}
+        installments={phone.installments}
+      />
+    ))
+  }
+</div>

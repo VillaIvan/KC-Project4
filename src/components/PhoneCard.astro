@@ -1,0 +1,45 @@
+---
+const { id, name, price, imageSrc, currency = "$", installments } = Astro.props;
+const formattedPrice = new Intl.NumberFormat("es-ES", {
+  style: "currency",
+  currency,
+  maximumFractionDigits: 0,
+}).format(price);
+
+const formattedInstallmentAmount = installments
+  ? new Intl.NumberFormat("es-AR", {
+      style: "currency",
+      currency,
+      maximumFractionDigits: 0,
+    }).format(installments.amount)
+  : "";
+---
+
+<div class="bg-white rounded-lg overflow-hidden flex flex-col shadow-md">
+  <div
+    class="aspect-square w-full overflow-hidden bg-gray-100 p-4 flex items-center justify-center"
+  >
+    <img
+      src={imageSrc || "/placeholder.svg"}
+      alt={name}
+      class="w-full h-full object-contain"
+    />
+  </div>
+  <div class="p-4 flex flex-col items-center text-center">
+    <h3 class="text-sm font-medium text-blue-600 uppercase tracking-wider">
+      {name}
+    </h3>
+    <p class="mt-2 text-xl font-bold text-gray-900">${formattedPrice}</p>
+
+    {
+      installments && (
+        <div class="mt-2 border-t border-gray-200 pt-2 w-full">
+          <p class="text-sm text-blue-500">
+            {installments.count} cuotas sin interés de{" "}
+            {formattedInstallmentAmount}
+          </p>
+        </div>
+      )
+    }
+  </div>
+</div>

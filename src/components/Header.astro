@@ -1,0 +1,42 @@
+---
+const { logoSrc, logoAlt } = Astro.props;
+import { Instagram, Linkedin, Phone, Facebook } from "@lucide/astro";
+import { ModeToggle } from "@/components/ModeToggle";
+import { Button } from "./ui/button";
+
+const socialPlatforms = [
+  { icon: Phone, href: "https://api.whatsapp.com/send?phone=5491152490908" },
+  { icon: Instagram, href: "https://instagram.com" },
+];
+---
+
+<header class="mb-12">
+  <div class="flex justify-around">
+    <img
+      src={logoSrc || "/placeholder.svg"}
+      alt={logoAlt}
+      class="h-16 md:h-48"
+    />
+    <div class="flex items-center justify-center space-x-4">
+      {
+        socialPlatforms.map(({ icon: Icon, href }) => (
+          <a
+            href={href}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="transition-colors"
+          >
+            <Button
+              variant="outline"
+              size="icon"
+              className="shadow-md h-12 w-12"
+            >
+              <Icon class="size-6" color="currentColor" />
+            </Button>
+          </a>
+        ))
+      }
+      <ModeToggle client:load />
+    </div>
+  </div>
+</header>

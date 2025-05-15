@@ -1,11 +1,25 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+import Header from "../components/Header.astro";
+import PhoneGrid from "../components/PhoneGrid.astro";
+import Layout from "../layouts/Layout.astro";
+import Logo from "../components/images/logo.png";
+import HeroCarousel from "../components/HeroCarousel";
+import BrandSelector from "@/components/BrandSelector";
+import Whatsapp from "@/components/Whatsapp.jsx";
 ---
 
-<Layout>
-	<Welcome />
+<Layout title="Venta de Celulares">
+  <Header logoSrc={Logo.src} logoAlt="Logo" />
+
+  <main>
+    <div class="flex justify-center">
+      <h1 class="text-3xl font-bold mb-8 text-center">
+        TODOS NUESTROS PRODUCTOS EN STOCK!
+      </h1>
+    </div>
+    <HeroCarousel client:load />
+    <BrandSelector />
+    <PhoneGrid />
+    <Whatsapp client:load />
+  </main>
 </Layout>
