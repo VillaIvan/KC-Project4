@@ -1,7 +1,7 @@
-import Apple from "@/components/images/Apple.svg";
-import Xiaomi from "@/components/images/Xiaomi.svg";
-import Samsung from "@/components/images/Samsung.svg";
-import Motorola from "@/components/images/Motorola.svg";
+import Apple from "../components/images/Apple.svg";
+import Xiaomi from "../components/images/Xiaomi.svg";
+import Samsung from "../components/images/Samsung.svg";
+import Motorola from "../components/images/motorola.svg";
 
 interface Brand {
   name: string;
